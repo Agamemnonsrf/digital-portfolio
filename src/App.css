@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter';
+}
+
 .container {
   height: 100vh;
   width: 100vw;
@@ -11,10 +18,75 @@
 
 .main {
   flex: 1;
-  background: linear-gradient(103deg, #000 17.75%, #052B35 100%);
+
+  height: 100%;
   overflow-y: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   color: rgb(255, 255, 255)
+}
+
+.section {
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  position: absolute;
+}
+
+.current-section {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.page-main-section-h1 {
+  padding-right: 100px;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+
+}
+
+.page-main-section-h2 {
+  padding-right: 100px;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  font-size: 100px;
+
+}
+
+h2 {
+  font-size: 50px;
+
+}
+
+.colormode {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.colormode button {
+  border-radius: 0;
+  width: 3vw;
+  height: 3vw;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colormode button:hover {
+  border: 2px solid white
+}
+
+.colormode button:focus {
+  outline: none;
 }
