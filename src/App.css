@@ -98,6 +98,13 @@ p {
     justify-content: center;
 }
 
+.page-section-h3 {
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 h1 {
     font-size: 100px;
     transition: color 0.3s ease-in-out;
@@ -106,6 +113,11 @@ h1 {
 h2 {
     font-size: 50px;
     transition: color 0.3s ease-in-out;
+}
+
+h5 {
+    font-size: 16px;
+    color: black;
 }
 
 .colormode {
@@ -135,16 +147,18 @@ h2 {
     border: none;
 }
 
-/* .sun-icon,
-.moon-icon {
-    transition: all 0.3s ease-in-out;
+.sun-icon {
+    height: 28.8px;
 }
 
-.colormode button:hover .sun-icon,
+.moon-icon {
+    height: 32px;
+}
+/* .colormode button:hover .sun-icon,
 .colormode button:hover .moon-icon {
     transform: rotate(90deg);
-} */
+} 
 
 .colormode button:focus {
     outline: none;
-}
+} */

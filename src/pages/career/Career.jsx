@@ -13,7 +13,7 @@ export function Career() {
         width: "max-content",
         height: "90%",
         position: "relative",
-        bottom: "50%",
+
         backgroundColor: "white",
         boxShadow: colorMode === "light" && "0px 4px 4px rgba(0, 0, 0, 1)",
         padding: "30px",
@@ -28,12 +28,9 @@ export function Career() {
             <section className="page-section-h2">
                 <CareerTimeLine
                     points={[
-                        { date: "2018" },
-                        { date: "2020" },
-                        { date: "JULY 2022" },
-                        { date: "SEPT 2022" },
-                        { date: "FEBR 2023" },
-                        { date: "JULY 2023" },
+                        [{ date: "2018" }, { date: "2020" }],
+                        [{ date: "SEPT 2022" }, { date: "JULY 2023" }],
+                        [{ date: "JULY 2023" }, { date: "FEBR 2023" }],
                     ]}
                 />
             </section>
