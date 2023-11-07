@@ -11,6 +11,7 @@ export function ProjectCard({ name }) {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        color: "white"
     };
 
     return (

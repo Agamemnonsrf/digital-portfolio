@@ -1,6 +1,7 @@
 import React from "react";
 import { Topnav } from "./Topnav";
 import { ProjectCard } from "./ProjectCard";
+import Sidenav from "../../components/Sidenav";
 
 export function Projects() {
     const [section, setSection] = React.useState("Web");
@@ -12,6 +13,52 @@ export function Projects() {
                 description: "This website!",
                 link: "",
             },
+            {
+                name: "Personal Website2",
+                description: "This website!2",
+                link: "",
+            },
+            {
+                name: "Personal Website3",
+                description: "This website!3",
+                link: "",
+            },
+            {
+                name: "Personal Website4",
+                description: "This website!4",
+                link: "",
+            },
+            {
+                name: "Personal Website2",
+                description: "This website!2",
+                link: "",
+            },
+            {
+                name: "Personal Website3",
+                description: "This website!3",
+                link: "",
+            },
+            {
+                name: "Personal Website4",
+                description: "This website!4",
+                link: "",
+            },
+            {
+                name: "Personal Website2",
+                description: "This website!2",
+                link: "",
+            },
+            {
+                name: "Personal Website3",
+                description: "This website!3",
+                link: "",
+            },
+            {
+                name: "Personal Website4",
+                description: "This website!4",
+                link: "",
+            },
+
         ],
         Mobile: [
             {
@@ -45,15 +92,15 @@ export function Projects() {
         backgroundColor: "white",
         borderRadius: "10px",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-end",
+        flexDirection: "column",
+        justifyContent: "space-between",
         padding: "0 10px ",
     };
 
     const projectsBoxStyle = {
         display: "flex",
         width: "100%",
-        alignItems: "center",
+        alignItems: "flex-end",
         justifyContent: "flex-start",
         overflowX: "auto",
     };
@@ -65,10 +112,13 @@ export function Projects() {
             </section>
             <section className="page-section-h3">
                 <div style={boxStyle}>
+                    <Sidenav stick="horizontal" invertColor buttons={[{ text: 'Web', icon: null }, { text: 'Mobile', icon: null }, { text: 'Collaborative', icon: null }]} />
                     <div style={projectsBoxStyle}>
-                        {projects[section].map((card) => {
-                            <ProjectCard name={card.name} />;
-                        })}
+                        {projects[section].map((project) => (
+                            <ProjectCard
+                                name={project.name}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>

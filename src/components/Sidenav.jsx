@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { AppContext } from "./context";
-import { HomeIcon, UserIcon, CodeIcon, EnvelopeIcon } from "./icons";
+import { getIcon } from "./icons";
 
 const decideSectionNumber = (section) => {
     if (typeof section !== "string") {
@@ -29,7 +29,7 @@ const decideSectionNumber = (section) => {
     }
 };
 
-const SidenavButton = ({ text, children }) => {
+const SidenavButton = ({ text, isVert, isCurrentSection, length, children, invertColor }) => {
     const [hovered, setHovered] = React.useState(false);
     const { section, setSection, colorMode } = useContext(AppContext);
 
@@ -41,26 +41,28 @@ const SidenavButton = ({ text, children }) => {
         setHovered(false);
     };
 
-    const isCurrentSection = decideSectionNumber(section) === text;
+    const hover = !isCurrentSection && hovered
 
     const buttonStyle = {
         display: "flex",
         borderRadius: "0",
         alignItems: "center",
         justifyContent: "center",
-        height: "25%",
-        width: !isCurrentSection && hovered ? "7.5vw" : "100%",
-        transition: "width 0.3s ease, background-color 0.3s ease",
+        height: isVert ? `${length}%` : hover ? "7.5vw" : "3vw",
+        width: isVert ? hover ? "7.5vw" : "3vw" : `${length}%`,
+        transition: "width 0.3s ease, height 0.3s ease, background-color 0.3s ease",
         backgroundColor:
             colorMode === "light"
                 ? isCurrentSection
-                    ? "white"
-                    : "black"
+                    ? invertColor ? "white" : "black"
+                    : invertColor ? "black" : "white"
                 : isCurrentSection
-                ? "black"
-                : "white",
+                    ? invertColor ? "black" : "white"
+                    : invertColor ? "white" : "black",
         cursor: isCurrentSection ? "auto" : "pointer",
     };
+
+
 
     return (
         <button
@@ -73,45 +75,36 @@ const SidenavButton = ({ text, children }) => {
             <span
                 style={{
                     fontSize: "23px",
-                    color: colorMode === "light" ? "white" : "black",
+                    color: colorMode === "light" ? invertColor ? "white" : "black" : invertColor ? "black" : "white",
                 }}
             >
-                {!isCurrentSection && hovered ? text : children}
+                {children ? hover ? text : children : text}
             </span>
         </button>
     );
 };
 
-const Sidenav = () => {
+const Sidenav = ({ stick, buttons, invertColor }) => {
     const { section, colorMode } = useContext(AppContext);
+
+    const iVert = stick === 'vertical';
+
     return (
         <div
             style={{
                 display: "flex",
-                flexDirection: "column",
-                height: "100vh",
-                width: "3vw",
+                flexDirection: iVert ? "column" : "row",
+                height: iVert ? '100%' : "3vw",
+                width: iVert ? "3vw" : "100%",
                 zIndex: "3",
             }}
         >
-            <SidenavButton text="Main">
-                <HomeIcon isCurrentSection={section === 0} color={colorMode} />
-            </SidenavButton>
+            {buttons.map((button, index) => {
+                return <SidenavButton text={button.text} isVert={iVert} isCurrentSection={section === index} length={100 / buttons.length} invertColor>
+                    {button.icon && getIcon(button.icon, section === index, colorMode)}
 
-            <SidenavButton text="Career">
-                <UserIcon isCurrentSection={section === 1} color={colorMode} />
-            </SidenavButton>
-
-            <SidenavButton text="Projects">
-                <CodeIcon isCurrentSection={section === 2} color={colorMode} />
-            </SidenavButton>
-
-            <SidenavButton text="Connect">
-                <EnvelopeIcon
-                    isCurrentSection={section === 3}
-                    color={colorMode}
-                />
-            </SidenavButton>
+                </SidenavButton>
+            })}
         </div>
     );
 };

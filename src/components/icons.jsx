@@ -31,4 +31,29 @@ const EnvelopeIcon = ({ isCurrentSection, color }) => {
     )
 }
 
-export { SunIcon, MoonIcon, HomeIcon, UserIcon, CodeIcon, EnvelopeIcon }
+import React from 'react'
+import { AppContext } from './context'
+
+const getIcon = (iconName, isCurrentSection) => {
+    const { colorMode } = React.useContext(AppContext)
+
+    switch (iconName) {
+        case 'sun':
+            return <SunIcon />
+        case 'moon':
+            return <MoonIcon />
+        case 'home':
+            return <HomeIcon isCurrentSection={isCurrentSection} colorMode={colorMode} />
+        case 'user':
+            return <UserIcon isCurrentSection={isCurrentSection} colorMode={colorMode} />
+        case 'code':
+            return <CodeIcon isCurrentSection={isCurrentSection} colorMode={colorMode} />
+        case 'envelope':
+            return <EnvelopeIcon isCurrentSection={isCurrentSection} colorMode={colorMode} />
+        default:
+            return null
+    }
+
+}
+
+export { getIcon, SunIcon, MoonIcon, HomeIcon, UserIcon, CodeIcon, EnvelopeIcon }
