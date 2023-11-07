@@ -142,7 +142,11 @@ h5 {
 
 .sidenav-button:focus,
 .sidenav-button:active,
-.sidenav-button:hover {
+.sidenav-button:hover,
+button:focus,
+button:active,
+button:hover,
+button {
     outline: none;
     border: none;
 }
@@ -154,6 +158,7 @@ h5 {
 .moon-icon {
     height: 32px;
 }
+
 /* .colormode button:hover .sun-icon,
 .colormode button:hover .moon-icon {
     transform: rotate(90deg);

@@ -10,20 +10,20 @@ import "./App.css";
 import { Layout } from "./layout";
 
 function App() {
-    const [section, setSection] = useState(0);
+    const [section, setSection] = useState("Main");
     const [colorMode, setColorMode] = useState("dark");
 
     return (
         <div className="container">
             <AppContext.Provider
-                value={{ section, setSection, colorMode, setColorMode }}
+                value={{ colorMode, setColorMode }}
             >
-                <Layout>
+                <Layout section={section} setSection={setSection}>
                     <GradientBackground color={colorMode} />
-                    <MainPage section={section} color={colorMode} />
-                    <CareerPage section={section} color={colorMode} />
-                    <ProjectsPage section={section} color={colorMode} />
-                    <ConnectPage section={section} color={colorMode} />
+                    <MainPage section={section} />
+                    <CareerPage section={section} />
+                    <ProjectsPage section={section} />
+                    <ConnectPage section={section} />
                 </Layout>
             </AppContext.Provider>
         </div>
@@ -48,18 +48,16 @@ const GradientBackground = ({ color }) => {
     );
 };
 
-const MainPage = ({ section, color }) => {
-    const isCurrentSection = section === 0;
+const MainPage = ({ section }) => {
+    const isCurrentSection = section === 'Main';
 
     return (
         <>
             <div
-                className={`${
-                    isCurrentSection ? "current-section" : " "
-                } section`}
+                className={`${isCurrentSection ? "current-section" : " "
+                    } section`}
                 style={{
                     position: "absolute",
-                    //center this div with top and left
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
@@ -71,15 +69,14 @@ const MainPage = ({ section, color }) => {
     );
 };
 
-const CareerPage = ({ section, color }) => {
-    const isCurrentSection = section === 1;
+const CareerPage = ({ section }) => {
+    const isCurrentSection = section === "Career";
 
     return (
         <>
             <div
-                className={`${
-                    isCurrentSection ? "current-section" : " "
-                } section`}
+                className={`${isCurrentSection ? "current-section" : " "
+                    } section`}
                 style={{
                     position: "absolute",
                 }}
@@ -90,15 +87,14 @@ const CareerPage = ({ section, color }) => {
     );
 };
 
-const ProjectsPage = ({ section, color }) => {
-    const isCurrentSection = section === 2;
+const ProjectsPage = ({ section }) => {
+    const isCurrentSection = section === 'Projects';
 
     return (
         <>
             <div
-                className={`${
-                    isCurrentSection ? "current-section" : " "
-                } section`}
+                className={`${isCurrentSection ? "current-section" : " "
+                    } section`}
                 style={{
                     position: "absolute",
                 }}
@@ -109,15 +105,14 @@ const ProjectsPage = ({ section, color }) => {
     );
 };
 
-const ConnectPage = ({ section, color }) => {
-    const isCurrentSection = section === 3;
+const ConnectPage = ({ section }) => {
+    const isCurrentSection = section === 'Connect';
 
     return (
         <>
             <div
-                className={`${
-                    isCurrentSection ? "current-section" : " "
-                } section`}
+                className={`${isCurrentSection ? "current-section" : " "
+                    } section`}
                 style={{
                     position: "absolute",
                 }}

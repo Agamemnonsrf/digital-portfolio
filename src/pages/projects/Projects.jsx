@@ -1,5 +1,4 @@
 import React from "react";
-import { Topnav } from "./Topnav";
 import { ProjectCard } from "./ProjectCard";
 import Sidenav from "../../components/Sidenav";
 
@@ -9,79 +8,66 @@ export function Projects() {
     const projects = {
         Web: [
             {
-                name: "Personal Website",
+                name: "765Forums",
                 description: "This website!",
-                link: "",
+                deploymentLink: "",
+                codeLink: ""
             },
             {
-                name: "Personal Website2",
+                name: "Equtree",
                 description: "This website!2",
-                link: "",
-            },
-            {
-                name: "Personal Website3",
+                deploymentLink: "",
+                codeLink: ""
+            }, {
+                name: "This Site",
                 description: "This website!3",
-                link: "",
+                deploymentLink: "",
+                codeLink: ""
             },
             {
-                name: "Personal Website4",
-                description: "This website!4",
-                link: "",
-            },
-            {
-                name: "Personal Website2",
-                description: "This website!2",
-                link: "",
-            },
-            {
-                name: "Personal Website3",
+                name: "Brahms Dev Website",
                 description: "This website!3",
-                link: "",
+                deploymentLink: "",
+                codeLink: ""
             },
             {
-                name: "Personal Website4",
-                description: "This website!4",
-                link: "",
-            },
-            {
-                name: "Personal Website2",
-                description: "This website!2",
-                link: "",
-            },
-            {
-                name: "Personal Website3",
+                name: "Caravage",
                 description: "This website!3",
-                link: "",
+                deploymentLink: "",
+                codeLink: ""
             },
             {
-                name: "Personal Website4",
-                description: "This website!4",
-                link: "",
+                name: "Token Invest",
+                description: "This website!3",
+                deploymentLink: "",
+                codeLink: ""
             },
-
+            {
+                name: "Escape Velocity",
+                description: "This website!3",
+                deploymentLink: "",
+                codeLink: ""
+            }, {
+                name: "Hygienic Live",
+                description: "This website!3",
+                deploymentLink: "",
+                codeLink: ""
+            }
         ],
         Mobile: [
             {
-                name: "Personal Website2",
+                name: "RN Calendar",
                 description: "This website!551",
-                link: "",
-            },
-            {
-                name: "Personal Website3",
-                description: "This website!552",
-                link: "",
-            },
-            {
-                name: "Personal Website4",
-                description: "This website!553",
-                link: "",
+                deploymentLink: "",
+                codeLink: ""
             },
         ],
         Collaborative: [
             {
-                name: "Sample project Website",
+                name: "Swing Paint",
                 description: "ooga website!",
-                link: "",
+                deploymentLink: "",
+                codeLink: ""
             },
         ],
     };
@@ -94,7 +80,6 @@ export function Projects() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        padding: "0 10px ",
     };
 
     const projectsBoxStyle = {
@@ -103,6 +88,8 @@ export function Projects() {
         alignItems: "flex-end",
         justifyContent: "flex-start",
         overflowX: "auto",
+        height: "75%",
+        paddingBottom: "20px",
     };
 
     return (
@@ -112,13 +99,14 @@ export function Projects() {
             </section>
             <section className="page-section-h3">
                 <div style={boxStyle}>
-                    <Sidenav stick="horizontal" invertColor buttons={[{ text: 'Web', icon: null }, { text: 'Mobile', icon: null }, { text: 'Collaborative', icon: null }]} />
+                    <Sidenav rounded={true} section={section} setSection={setSection} stick="horizontal" keepMode="light" buttons={[{ text: 'Web', icon: null }, { text: 'Mobile', icon: null }, { text: 'Collaborative', icon: null }]} />
                     <div style={projectsBoxStyle}>
                         {projects[section].map((project) => (
                             <ProjectCard
                                 name={project.name}
                             />
                         ))}
+                        <h2 style={{ color: "black" }}>More Coming Soon...</h2>
                     </div>
                 </div>
             </section>

@@ -3,7 +3,7 @@ import Sidenav from "./components/Sidenav";
 import { Colormode } from "./components/Colormode";
 import { AppContext } from "./components/context";
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children, section, setSection }) => {
     const { colorMode } = React.useContext(AppContext);
 
     const mainStyle = {
@@ -14,7 +14,7 @@ export const Layout = ({ children }) => {
 
     return (
         <div className="layout">
-            <Sidenav buttons={[{ text: 'Main', icon: "home" }, { text: 'Career', icon: "user" }, { text: 'Projects', icon: "code" }, { text: 'Connect', icon: "envelope" }]} stick="vertical" />
+            <Sidenav rounded={false} section={section} setSection={setSection} buttons={[{ text: 'Main', icon: "home" }, { text: 'Career', icon: "user" }, { text: 'Projects', icon: "code" }, { text: 'Connect', icon: "envelope" }]} stick="vertical" />
             <main style={mainStyle} className="main">
                 {children}
             </main>

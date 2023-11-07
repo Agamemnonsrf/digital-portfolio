@@ -29,9 +29,11 @@ const decideSectionNumber = (section) => {
     }
 };
 
-const SidenavButton = ({ text, isVert, isCurrentSection, length, children, invertColor }) => {
+const SidenavButton = ({ isFirst, isLast, text, isVert, isCurrentSection, length, children, keepMode, setSection, rounded }) => {
     const [hovered, setHovered] = React.useState(false);
-    const { section, setSection, colorMode } = useContext(AppContext);
+    const { colorMode } = useContext(AppContext);
+
+    let color = keepMode ? keepMode : colorMode;
 
     const handleHover = () => {
         setHovered(true);
@@ -52,14 +54,18 @@ const SidenavButton = ({ text, isVert, isCurrentSection, length, children, inver
         width: isVert ? hover ? "7.5vw" : "3vw" : `${length}%`,
         transition: "width 0.3s ease, height 0.3s ease, background-color 0.3s ease",
         backgroundColor:
-            colorMode === "light"
+            color === "light"
                 ? isCurrentSection
-                    ? invertColor ? "white" : "black"
-                    : invertColor ? "black" : "white"
+                    ? "white"
+                    : "black"
                 : isCurrentSection
-                    ? invertColor ? "black" : "white"
-                    : invertColor ? "white" : "black",
+                    ? "black"
+                    : "white",
         cursor: isCurrentSection ? "auto" : "pointer",
+        borderTopLeftRadius: isFirst && !isVert && rounded ? "10px" : "0px",
+        borderTopRightRadius: isLast && !isVert && rounded ? "10px" : "0px",
+        borderBottomLeftRadius: "0",
+        borderBottomRightRadius: "0",
     };
 
 
@@ -70,12 +76,17 @@ const SidenavButton = ({ text, isVert, isCurrentSection, length, children, inver
             style={buttonStyle}
             onMouseEnter={handleHover}
             onMouseLeave={handleLeave}
-            onClick={() => setSection(decideSectionNumber(text))}
+            onClick={() => setSection(text)}
         >
             <span
                 style={{
                     fontSize: "23px",
-                    color: colorMode === "light" ? invertColor ? "white" : "black" : invertColor ? "black" : "white",
+                    color: color === "light" ? isCurrentSection
+                        ? "black"
+                        : "white"
+                        : isCurrentSection
+                            ? "white"
+                            : "black",
                 }}
             >
                 {children ? hover ? text : children : text}
@@ -84,9 +95,9 @@ const SidenavButton = ({ text, isVert, isCurrentSection, length, children, inver
     );
 };
 
-const Sidenav = ({ stick, buttons, invertColor }) => {
-    const { section, colorMode } = useContext(AppContext);
-
+const Sidenav = ({ stick, buttons, keepMode = null, section, setSection, rounded = false }) => {
+    const { colorMode } = useContext(AppContext);
+    let color = keepMode ? keepMode : colorMode;
     const iVert = stick === 'vertical';
 
     return (
@@ -100,9 +111,8 @@ const Sidenav = ({ stick, buttons, invertColor }) => {
             }}
         >
             {buttons.map((button, index) => {
-                return <SidenavButton text={button.text} isVert={iVert} isCurrentSection={section === index} length={100 / buttons.length} invertColor>
-                    {button.icon && getIcon(button.icon, section === index, colorMode)}
-
+                return <SidenavButton isFirst={index === 0} isLast={index === buttons.length - 1} rounded={rounded} text={button.text} isVert={iVert} isCurrentSection={section === button.text} length={100 / buttons.length} keepMode={keepMode} setSection={setSection}>
+                    {button.icon && getIcon(button.icon, section === button.text, color)}
                 </SidenavButton>
             })}
         </div>
