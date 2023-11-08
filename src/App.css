@@ -170,6 +170,11 @@ button {
 
 .project-card:hover .project-image-above {
     transform: translateY(0);
+
+}
+
+.project-card:hover .project-image-below {
+    transform: translateY(100%);
 }
 
 .project-image-above {
@@ -182,6 +187,9 @@ button {
 
 .project-image-below {
     position: relative;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(0);
+    will-change: transform;
     z-index: 1;
 }
 
@@ -194,11 +202,24 @@ button {
 }
 
 .project-card a:hover {
-    text-decoration: underline;
+    scale: 1.05;
 }
 
 .project-card button {
     transition: transform 0.3s ease-in-out;
+}
+
+.project-link-span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    transition: scale 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.project-link-span:hover {
+    justify-content: space-between;
+    width: 115%;
 }
 
 .project-card button:hover {

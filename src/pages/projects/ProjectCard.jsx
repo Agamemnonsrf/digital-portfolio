@@ -1,5 +1,6 @@
 import React from "react";
 import { caseHardenedSVG } from "../../components/svgs";
+import { TechPill } from "./TechPill";
 
 export function ProjectCard(props) {
     const boxStyle = {
@@ -7,6 +8,7 @@ export function ProjectCard(props) {
         height: "100%",
         backgroundColor: "#000000",
         backgroundImage: caseHardenedSVG(),
+        backgroundPosition: props.backgroundPosition || "center",
         borderRadius: "20px",
         margin: "0 25px",
         display: "flex",
@@ -26,10 +28,13 @@ export function ProjectCard(props) {
     return (
         <div className="project-card" style={boxStyle}>
             <h4 style={{ fontSize: "1.2em", backgroundColor: "black", width: "100%", textAlign: "center", borderRadius: "10px", padding: "10px", border: "1px solid rgba(255,255,255,0.2)" }}>{props.name}</h4>
+            <div className="technology-pill-container">{props.tech.map(pill => {
+                return <TechPill name={pill}></TechPill>
+            })}</div>
             <div className="project-image-container"><img className="project-image-above" src={props.images[1]} width="100%" /><img className="project-image-below" src={props.images[0]} width="100%" /></div>
             <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                 <button style={coloredButtonStyle}>Read More</button>
-                <div style={{ minHeight: "100%", width: "100%", padding: "20px 0 0 0", display: "flex", alignItems: "center", justifyContent: "space-around" }}>{props.codeLink && <a style={{ color: "white" }} href={props.codeLink} target="_blank">Code{'>>'}</a>} {props.deploymentLink && <a style={{ color: "white" }} href={props.deploymentLink} target="_blank">Deployment{'>>'}</a>}</div>
+                <div style={{ minHeight: "100%", width: "100%", padding: "20px 0 0 0", display: "flex", alignItems: "center", justifyContent: "space-around" }}>{props.codeLink && <a style={{ color: "white" }} href={props.codeLink} target="_blank"><span className="project-link-span"><span>Code</span><span>{'>>'}</span></span></a>} {props.deploymentLink && <a style={{ color: "white" }} href={props.deploymentLink} target="_blank">Deployment{'>>'}</a>}</div>
             </div>
         </div>
     );

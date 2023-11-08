@@ -4,6 +4,7 @@ import Sidenav from "../../components/Sidenav";
 import { textureSVG } from "../../components/svgs";
 import { AppContext } from "../../components/context";
 
+
 export function Projects() {
     const [section, setSection] = React.useState("Web");
     const { colorMode } = React.useContext(AppContext);
@@ -15,48 +16,55 @@ export function Projects() {
                 description: "This website!",
                 deploymentLink: "",
                 codeLink: "https://github.com/ooey/765forums",
-                images: ["src/pages/projects/images/765forums-1.png", "src/pages/projects/images/765forums-2.png"]
+                images: ["src/pages/projects/images/765forums-1.png", "src/pages/projects/images/765forums-2.png"],
+                tech: ["Nextjs", "Reactjs", "Nodejs", "Expressjs", "MySQL"]
             },
             {
                 name: "Equtree",
                 description: "This website!2",
                 deploymentLink: "https://equtree.surge.sh",
                 codeLink: "https://github.com/ooey/equtree",
-                images: ["src/pages/projects/images/equtree-1.png", "src/pages/projects/images/equtree-2.png"]
+                images: ["src/pages/projects/images/equtree-1.png", "src/pages/projects/images/equtree-2.png"],
+                tech: ["Reactjs"]
             }, {
                 name: "This Site",
                 description: "This website!3",
                 deploymentLink: "",
-                codeLink: "",
-                images: ["src/pages/projects/images/765forums-1.png", "src/pages/projects/images/765forums-2.png"]
+                codeLink: "https://github.com/ooey/digital-portfolio",
+                images: ["src/pages/projects/images/765forums-1.png", "src/pages/projects/images/765forums-2.png"],
+                tech: ["Reactjs"]
             },
             {
                 name: "Brahms Dev Website",
                 description: "This website!3",
                 deploymentLink: "https://brahmsdev.com",
                 codeLink: "",
-                images: ["src/pages/projects/images/brahmsdev-1.png", "src/pages/projects/images/brahmsdev-2.png"]
+                images: ["src/pages/projects/images/brahmsdev-1.png", "src/pages/projects/images/brahmsdev-2.png"],
+                tech: ["HTML", "CSS", "JavaScript"]
             },
             {
                 name: "Caravage",
                 description: "This website!3",
                 deploymentLink: "https://caravage.ch/",
                 codeLink: "",
-                images: ["src/pages/projects/images/caravage-1.png", "src/pages/projects/images/caravage-2.png"]
+                images: ["src/pages/projects/images/caravage-1.png", "src/pages/projects/images/caravage-2.png"],
+                tech: ["HTML", "CSS", "JavaScript"]
             },
             {
                 name: "Token Invest",
                 description: "This website!3",
                 deploymentLink: "https://tokeninvest.ch/",
                 codeLink: "",
-                images: ["src/pages/projects/images/tokeninvest-1.png", "src/pages/projects/images/tokeninvest-2.png"]
+                images: ["src/pages/projects/images/tokeninvest-1.png", "src/pages/projects/images/tokeninvest-2.png"],
+                tech: ["HTML", "CSS", "JavaScript"]
             },
             {
                 name: "Escape Velocity",
                 description: "This website!3",
                 deploymentLink: "http://escape-velocity.ch/",
                 codeLink: "",
-                images: ["src/pages/projects/images/escapevelocity-1.png", "src/pages/projects/images/escapevelocity-2.png"]
+                images: ["src/pages/projects/images/escapevelocity-1.png", "src/pages/projects/images/escapevelocity-2.png"],
+                tech: ["HTML", "CSS", "JavaScript"]
             }
         ],
         Mobile: [
@@ -65,7 +73,8 @@ export function Projects() {
                 description: "This website!551",
                 deploymentLink: "",
                 codeLink: "",
-                images: ["./images/765forums-1.png", "./images/765forums-2.png"]
+                images: ["./images/765forums-1.png", "./images/765forums-2.png"],
+                tech: ["React Native", "SQLite"]
             },
         ],
         Collaborative: [
@@ -74,7 +83,8 @@ export function Projects() {
                 description: "ooga website!",
                 deploymentLink: "",
                 codeLink: "",
-                images: ["./images/765forums-1.png", "./images/765forums-2.png"]
+                images: ["./images/765forums-1.png", "./images/765forums-2.png"],
+                tech: ["Java Swing"]
             },
         ],
     };
@@ -109,11 +119,16 @@ export function Projects() {
                 <div style={boxStyle}>
                     <Sidenav rounded={true} section={section} setSection={setSection} stick="horizontal" keepMode="light" buttons={[{ text: 'Web', icon: null }, { text: 'Mobile', icon: null }, { text: 'Collaborative', icon: null }]} />
                     <div style={projectsBoxStyle}>
-                        {projects[section].map((project) => (
-                            <ProjectCard
-                                {...project}
-                            />
-                        ))}
+                        {projects[section].map((project) => {
+                            const backgroundPosition = `${Math.floor(Math.random() * 200)}% ${Math.floor(Math.random() * 200)}%`;
+
+                            return (
+                                <ProjectCard
+                                    {...project}
+                                    backgroundPosition={backgroundPosition}
+                                />
+                            )
+                        })}
                         <h2 style={{ color: "black", margin: "0 10px" }}>More<br />Coming<br />Soon...</h2>
                     </div>
                 </div>
