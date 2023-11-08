@@ -77,6 +77,7 @@ const SidenavButton = ({ isFirst, isLast, text, isVert, isCurrentSection, length
             onMouseEnter={handleHover}
             onMouseLeave={handleLeave}
             onClick={() => setSection(text)}
+            key={text}
         >
             <span
                 style={{

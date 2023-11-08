@@ -1,10 +1,12 @@
 import React from "react";
+import { caseHardenedSVG } from "../../components/svgs";
 
-export function ProjectCard({ name }) {
+export function ProjectCard(props) {
     const boxStyle = {
-        minWidth: "350px",
+        minWidth: "400px",
         height: "100%",
-        backgroundColor: "black",
+        backgroundColor: "#000000",
+        backgroundImage: caseHardenedSVG(),
         borderRadius: "20px",
         margin: "0 25px",
         display: "flex",
@@ -22,12 +24,12 @@ export function ProjectCard({ name }) {
     }
 
     return (
-        <div style={boxStyle}>
-            <h4 style={{ fontSize: "1.2em" }}>{name}</h4>
-            <div>image</div>
+        <div className="project-card" style={boxStyle}>
+            <h4 style={{ fontSize: "1.2em", backgroundColor: "black", width: "100%", textAlign: "center", borderRadius: "10px", padding: "10px", border: "1px solid rgba(255,255,255,0.2)" }}>{props.name}</h4>
+            <div className="project-image-container"><img className="project-image-above" src={props.images[1]} width="100%" /><img className="project-image-below" src={props.images[0]} width="100%" /></div>
             <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                 <button style={coloredButtonStyle}>Read More</button>
-                <div style={{ width: "100%", padding: "20px 0 0 0", display: "flex", alignItems: "center", justifyContent: "space-around" }}><a style={{ color: "white" }}>Code{'>>'}</a> <a style={{ color: "white" }}>Deployment{'>>'}</a></div>
+                <div style={{ minHeight: "100%", width: "100%", padding: "20px 0 0 0", display: "flex", alignItems: "center", justifyContent: "space-around" }}>{props.codeLink && <a style={{ color: "white" }} href={props.codeLink} target="_blank">Code{'>>'}</a>} {props.deploymentLink && <a style={{ color: "white" }} href={props.deploymentLink} target="_blank">Deployment{'>>'}</a>}</div>
             </div>
         </div>
     );

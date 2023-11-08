@@ -151,6 +151,60 @@ button {
     border: none;
 }
 
+.project-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: max-content;
+    box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+    border: thin solid rgb(38, 57, 77);
+
+}
+
+.project-image-container img {
+    border-radius: 10px;
+    height: 100%;
+
+}
+
+
+.project-card:hover .project-image-above {
+    transform: translateY(0);
+}
+
+.project-image-above {
+    position: absolute;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%);
+    will-change: transform;
+    z-index: 2;
+}
+
+.project-image-below {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+.project-card a,
+.project-card button {
+    font-family: 'jetbrains mono';
+    font-size: 1.2em;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+.project-card button {
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-card button:hover {
+    transform: perspective(200px) rotateX(15deg) rotateY(15deg);
+}
+
 .sun-icon {
     height: 28.8px;
 }
@@ -167,3 +221,31 @@ button {
 .colormode button:focus {
     outline: none;
 } */
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #a0a0a0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: black;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #666666;
+}

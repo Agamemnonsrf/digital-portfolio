@@ -1,7 +1,7 @@
 import React from "react";
 
-export function CareerTimeLine({ points }) {
-    const fitWidthPx = 500;
+export function CareerTimeLine({ points, setInfo }) {
+    const fitWidthPx = 700;
     const containerStyle = {
         display: "flex",
         width: fitWidthPx + "px",
@@ -33,7 +33,7 @@ export function CareerTimeLine({ points }) {
                         {pointLine.map((point, pointLineIndex) => {
                             return (
                                 <div
-                                    style={{ margin: "25px 0" }}
+                                    style={{ margin: `25px 0` }}
                                     key={point.date}
                                 >
                                     <div
@@ -48,26 +48,30 @@ export function CareerTimeLine({ points }) {
                                             pointsIndex % 2 === 1 && (
                                                 <HorseShoeLine orientation="left" />
                                             )}
-                                        <DatePoint date={point.date} />
+                                        <DatePoint
+                                            date={point.date}
+                                            info={point.info}
+                                            setInfo={setInfo}
+                                        />
 
                                         {/* straight svg horizontal line */}
                                         {pointLineIndex !==
                                             ifOneAddOne(pointLine.length) -
-                                                1 && (
-                                            <StraightLine
-                                                length={
-                                                    fitWidthPx /
+                                            1 && (
+                                                <StraightLine
+                                                    length={
+                                                        fitWidthPx /
                                                         (ifOneAddOne(
                                                             pointLine.length
                                                         ) -
                                                             1) -
-                                                    40 *
+                                                        40 *
                                                         ifOneReturnZero(
                                                             pointLine.length
                                                         )
-                                                }
-                                            />
-                                        )}
+                                                    }
+                                                />
+                                            )}
                                         {/* svg line that does a horseshoe shape */}
                                         {pointLineIndex ===
                                             pointLine.length - 1 &&
@@ -79,7 +83,7 @@ export function CareerTimeLine({ points }) {
                                         {pointLineIndex ===
                                             pointLine.length - 1 &&
                                             pointsIndex ===
-                                                points.length - 1 && (
+                                            points.length - 1 && (
                                                 <>
                                                     <svg height="2" width="70">
                                                         <line
@@ -135,11 +139,10 @@ const HorseShoeLine = ({ orientation }) => {
                 viewBox="0 0 83 86"
                 fill="none"
                 style={{
-                    transform: `translateY(46.78%) ${
-                        orientation === "left"
-                            ? "translateX(-100%)"
-                            : "translateX(100%)"
-                    } rotate(${orientation === "left" ? "180" : "0"}deg)`,
+                    transform: `translateY(46.78%) ${orientation === "left"
+                        ? "translateX(-100%)"
+                        : "translateX(100%)"
+                        } rotate(${orientation === "left" ? "180" : "0"}deg)`,
                     position: "absolute",
                     left: orientation === "left" ? "0" : "unset",
                     right: orientation === "right" ? "0" : "unset",
@@ -156,40 +159,64 @@ const HorseShoeLine = ({ orientation }) => {
     );
 };
 
-const DatePoint = ({ date }) => {
+const DatePoint = ({ date, info, setInfo }) => {
+    const [hovering, setHovering] = React.useState(false);
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                transform: "translateY(0%)",
-            }}
-        >
+        <div style={{ position: "relative" }}>
             <div
                 style={{
-                    backgroundColor: "white",
-                    borderRadius: "15px",
-                    padding: "4px",
-                    margin: "5px",
-                    position: "absolute",
-                    bottom: "100%",
-                    width: "max-content",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "100%",
                 }}
             >
-                <h5>{date}</h5>
+                <div
+                    style={{
+                        backgroundColor: "white",
+                        borderRadius: "15px",
+                        padding: "4px",
+                        margin: "5px",
+                        position: "absolute",
+                        bottom: "100%",
+                        width: "max-content",
+                    }}
+                >
+                    <h5>{date}</h5>
+                </div>
+                <svg height="30" width="30">
+                    <circle
+                        style={{ transition: "fill 0.2s ease-in-out" }}
+                        cx="15"
+                        cy="15"
+                        r="13"
+                        stroke="white"
+                        strokeWidth="3"
+                        fill={hovering ? "white" : "transparent"}
+                    />
+                </svg>
             </div>
-            <svg height="30" width="30">
-                <circle
-                    cx="15"
-                    cy="15"
-                    r="13"
-                    stroke="white"
-                    strokeWidth="3"
-                    fill="transparent"
-                />
-            </svg>
+            <div
+                onMouseEnter={() => {
+                    setHovering(true);
+                    setInfo({ heading: date, info: info });
+                }}
+                onMouseLeave={() => {
+                    setHovering(false);
+                    setInfo({
+                        heading: "Hover over a date to see details",
+                        info: "",
+                    });
+                }}
+                style={{
+                    width: "100px",
+                    height: " 100px",
+                    position: "absolute",
+                    top: "-200%",
+                    left: "-100%",
+                }}
+            />
         </div>
     );
 };
