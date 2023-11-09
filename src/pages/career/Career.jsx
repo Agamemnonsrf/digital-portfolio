@@ -18,6 +18,7 @@ export function Career() {
     const textBoxStyle = {
         width: "50vw",
         height: "90%",
+        transform: "translateY(-25%)",
         position: "relative",
         backgroundColor: "#ffffff",
         backgroundImage: textureSVG(0.3),

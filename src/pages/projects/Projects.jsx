@@ -17,7 +17,7 @@ export function Projects() {
                 deploymentLink: "",
                 codeLink: "https://github.com/ooey/765forums",
                 images: ["src/pages/projects/images/765forums-1.png", "src/pages/projects/images/765forums-2.png"],
-                tech: ["Nextjs", "Reactjs", "Nodejs", "Expressjs", "MySQL"]
+                tech: ["Nextjs", "Reactjs", "Expressjs", "MySQL"]
             },
             {
                 name: "Equtree",

@@ -168,6 +168,7 @@ button {
 }
 
 
+
 .project-card:hover .project-image-above {
     transform: translateY(0);
 
@@ -176,6 +177,22 @@ button {
 .project-card:hover .project-image-below {
     transform: translateY(100%);
 }
+
+.project-card:hover .technology-pill-container {
+    transform: translateY(0);
+    margin-top: 10px;
+}
+
+.project-card h4 {
+    z-index: 2
+}
+
+.technology-pill-container {
+
+    transition: transform 0.3s ease-in-out, margin-top 0.3s ease-in-out;
+    transform: translateY(-100%)
+}
+
 
 .project-image-above {
     position: absolute;

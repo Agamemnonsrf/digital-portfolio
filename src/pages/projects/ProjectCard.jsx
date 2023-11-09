@@ -27,10 +27,12 @@ export function ProjectCard(props) {
 
     return (
         <div className="project-card" style={boxStyle}>
-            <h4 style={{ fontSize: "1.2em", backgroundColor: "black", width: "100%", textAlign: "center", borderRadius: "10px", padding: "10px", border: "1px solid rgba(255,255,255,0.2)" }}>{props.name}</h4>
-            <div className="technology-pill-container">{props.tech.map(pill => {
-                return <TechPill name={pill}></TechPill>
-            })}</div>
+            <div style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <h4 style={{ fontSize: "1.2em", backgroundColor: "black", width: "100%", textAlign: "center", borderRadius: "10px", padding: "10px", border: "1px solid rgba(255,255,255,0.2)" }}>{props.name}</h4>
+                <div className="technology-pill-container">{props.tech.map(pill => {
+                    return <TechPill name={pill}></TechPill>
+                })}</div>
+            </div>
             <div className="project-image-container"><img className="project-image-above" src={props.images[1]} width="100%" /><img className="project-image-below" src={props.images[0]} width="100%" /></div>
             <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                 <button style={coloredButtonStyle}>Read More</button>

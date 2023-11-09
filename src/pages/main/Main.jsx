@@ -1,5 +1,6 @@
 import React from "react";
 import { AppContext } from "../../components/context";
+import { caseHardenedSVG } from "../../components/svgs";
 
 export function Main() {
     const { colorMode } = React.useContext(AppContext);
@@ -30,10 +31,9 @@ export function Main() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-end",
+                    backgroundColor: "rgba(0,0,0,0.7)",
                     background:
-                        colorMode === "light"
-                            ? "linear-gradient(90deg, #FFF 10%, #0096BC 60%, #44DB0F 100%)"
-                            : "linear-gradient(90deg, #000 10%, #0096BC 60%, #44DB0F 100%)",
+                        caseHardenedSVG(1),
                     width: "97vw",
                     textAlign: "right",
                     paddingRight: "100px",
