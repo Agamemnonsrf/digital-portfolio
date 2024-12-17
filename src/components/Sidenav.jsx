@@ -113,7 +113,7 @@ const Sidenav = ({ stick, buttons, keepMode = null, section, setSection, rounded
             }}
         >
             {buttons.map((button, index) => {
-                return <SidenavButton isFirst={index === 0} isLast={index === buttons.length - 1} rounded={rounded} text={button.text} isVert={iVert} isCurrentSection={section === button.text} length={100 / buttons.length} keepMode={keepMode} setSection={setSection}>
+                return <SidenavButton key={index} isFirst={index === 0} isLast={index === buttons.length - 1} rounded={rounded} text={button.text} isVert={iVert} isCurrentSection={section === button.text} length={100 / buttons.length} keepMode={keepMode} setSection={setSection}>
                     {button.icon && getIcon(button.icon, section === button.text, color)}
                 </SidenavButton>
             })}

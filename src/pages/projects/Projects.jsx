@@ -137,6 +137,7 @@ export function Projects() {
 
                             return (
                                 <ProjectCard
+                                    key={project.name}
                                     {...project}
                                     setModalInfo={setModalInfo}
                                     setShowModal={setShowModal}

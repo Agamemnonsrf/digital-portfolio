@@ -27,7 +27,7 @@ export function ProjectCard(props) {
                 <h4 style={{ fontSize: "1.2em", backgroundColor: "black", width: "100%", textAlign: "center", borderRadius: "10px", padding: "10px", border: "1px solid rgba(255,255,255,0.2)" }}>{name}</h4>
                 <div className="technology-pill-container">
                     {tech.map(pill => {
-                        return <TechPill name={pill}></TechPill>
+                        return <TechPill key={pill} name={pill}></TechPill>
                     })}
                 </div>
             </div>
