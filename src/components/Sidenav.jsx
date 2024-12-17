@@ -50,9 +50,9 @@ const SidenavButton = ({ isFirst, isLast, text, isVert, isCurrentSection, length
         borderRadius: "0",
         alignItems: "center",
         justifyContent: "center",
-        height: isVert ? `${length}%` : hover ? "7.5vw" : "3vw",
-        width: isVert ? hover ? "7.5vw" : "3vw" : `${length}%`,
-        transition: "width 0.3s ease, height 0.3s ease, background-color 0.3s ease",
+        height: isVert ? `${length}%` : hover ? "80px" : "40px",
+        width: isVert ? hover ? "100px" : "50px" : `${length}%`,
+        transition: isVert ? "width 0.3s ease, background-color 0.3s ease" : "height 0.3s ease",
         backgroundColor:
             color === "light"
                 ? isCurrentSection
@@ -76,12 +76,13 @@ const SidenavButton = ({ isFirst, isLast, text, isVert, isCurrentSection, length
             style={buttonStyle}
             onMouseEnter={handleHover}
             onMouseLeave={handleLeave}
-            onClick={() => setSection(text)}
+            onClick={() => {
+                setSection(text)
+            }}
             key={text}
         >
             <span
                 style={{
-                    fontSize: "23px",
                     color: color === "light" ? isCurrentSection
                         ? "black"
                         : "white"
@@ -106,8 +107,8 @@ const Sidenav = ({ stick, buttons, keepMode = null, section, setSection, rounded
             style={{
                 display: "flex",
                 flexDirection: iVert ? "column" : "row",
-                height: iVert ? '100%' : "3vw",
-                width: iVert ? "3vw" : "100%",
+                height: iVert ? '100%' : "40px",
+                width: iVert ? "50px" : "100%",
                 zIndex: "3",
             }}
         >

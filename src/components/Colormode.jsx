@@ -8,6 +8,7 @@ export function Colormode() {
     const sunStyle = {
         backgroundColor: colorMode === "light" ? "black" : "unset",
         cursor: colorMode === "light" ? "auto" : "pointer",
+
     };
 
     const moonStyle = {

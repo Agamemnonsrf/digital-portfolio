@@ -5,8 +5,13 @@ import { caseHardenedSVG } from "../../components/svgs";
 export function Main() {
     const { colorMode } = React.useContext(AppContext);
 
+    const isLight = colorMode === "light";
+
     const textStyle = {
-        color: colorMode === "light" ? "black" : "white",
+        color: isLight ? "black" : "white",
+    };
+    const altTextStyle = {
+        color: isLight ? "white" : "black",
     };
 
     return (
@@ -16,9 +21,9 @@ export function Main() {
                     style={{
                         textAlign: "right",
                         lineHeight: "1.5",
-                        fontSize: "100px",
                         ...textStyle,
                     }}
+                    className="responsive-h1"
                 >
                     AGAMEMNON
                     <br />
@@ -31,18 +36,16 @@ export function Main() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-end",
-                    backgroundColor: "rgba(0,0,0,0.7)",
-                    background:
-                        caseHardenedSVG(1),
+                    background: `${caseHardenedSVG('%2344e50b', isLight ? 0.24 : 0.24)}, linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.75)) `,
                     width: "97vw",
                     textAlign: "right",
-                    paddingRight: "100px",
+                    color: "white"
                 }}
             >
-                <h2>Aspiring Web Developer</h2>
+                <h2 className="responsive-h2">Web & Mobile Developer</h2>
             </section>
             <section style={textStyle} className="page-main-section-h1">
-                <h2>Welcome to my digital portfolio!</h2>
+                <h2 className="responsive-h2">Welcome to my digital portfolio!</h2>
             </section>
         </div>
     );

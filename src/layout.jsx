@@ -2,13 +2,12 @@ import React from "react";
 import Sidenav from "./components/Sidenav";
 import { Colormode } from "./components/Colormode";
 import { AppContext } from "./components/context";
-import { textureSVG } from "./components/svgs";
+import { textureSVG, CircuitSVG, caseHardenedSVG } from "./components/svgs";
 
 export const Layout = ({ children, section, setSection }) => {
     const { colorMode } = React.useContext(AppContext);
 
     const mainStyle = {
-        backgroundColor: colorMode === "light" ? "white" : "black",
         background: textureSVG()
     };
 

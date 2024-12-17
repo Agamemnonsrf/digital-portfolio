@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../components/context';
 
 const exampleStyle = {
     backgroundColor: 'white',
@@ -10,7 +11,20 @@ const exampleStyle = {
     margin: '2px',
 };
 
-const TechPill = ({ name, children }) => {
+const TechPill = ({ name, children, followTheme = false }) => {
+    const { colorMode } = React.useContext(AppContext)
+    if (followTheme) {
+        return (
+            <div className="tech-pill" style={{
+                ...exampleStyle,
+                backgroundColor: colorMode === "light" ? "black" : "white",
+                color: colorMode === "light" ? "white" : "black"
+            }}>
+                <div>{children}</div>
+                <span>{name}</span>
+            </div>
+        )
+    }
     return (
         <div className="tech-pill" style={exampleStyle}>
             <div>{children}</div>

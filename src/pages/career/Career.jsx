@@ -12,27 +12,23 @@ export function Career() {
 
     const { colorMode } = React.useContext(AppContext);
     const [info, setInfo] = React.useState(defaultInfo);
+
+    const isLight = colorMode === "light";
+
     const textStyle = {
-        color: colorMode === "light" ? "black" : "white",
+        color: isLight ? "black" : "white",
     };
     const textBoxStyle = {
-        width: "50vw",
-        height: "90%",
-        transform: "translateY(-25%)",
-        position: "relative",
-        backgroundColor: "#ffffff",
         backgroundImage: textureSVG(0.3),
-        boxShadow: colorMode === "light" && "0px 4px 4px rgba(0, 0, 0, 1)",
-        padding: "30px",
-        borderRadius: "30px",
+        boxShadow: isLight && "0px 4px 4px rgba(0, 0, 0, 0.5)",
     };
 
     return (
         <div className="section-container">
-            <section className="page-section-h1">
+            <section className="page-section-h05">
                 <h2 style={textStyle}>Career</h2>
             </section>
-            <section className="page-section-h2">
+            <section className="page-section-h3">
                 <CareerTimeLine
                     points={[
                         [
@@ -56,15 +52,22 @@ export function Career() {
                             {
                                 date: ["FEBR 2023", "JULY 2023"],
                                 info: "I held a role as a <b>Contractor Frontend Developer</b> at <a href='https://www.linkedin.com/company/brahms-dev/' target='_blank'>Brahms Dev Software Development Agency</a>, where I was tasked with creating websites for clients. I utilized a combination of <b>HTML & CSS, JavaScript/JQuery, and PHP</b> to deliver these projects. Additionally, I took on the responsibilities of <b>SEO & UX optimization</b> and ensuring <b>Responsive Design</b>.",
-                                length: "420",
+                                length: "300",
                             },
                         ],
+                        [
+                            {
+                                date: ["PRESENT", "DEC 2023"],
+                                info: "I am currently employed as a <strong>Business Analyst/Mobile App Developer</strong> at the <a href='https://www2.deloitte.com/gr/en/pages/about-deloitte/topics/DACC.html' target='_blank'>Deloitte Alexander Competence Center</a> in Thessaloniki. As part of a mobile development team, I am contributing to the modernization of a mobile application for an international energy provider. We are rebuilding the legacy app, originally developed with the <strong>Ionic Angular</strong> framework, using <strong>React Native</strong>.",
+                                length: "420",
+                            }
+                        ]
                     ]}
                     setInfo={setInfo}
                 />
             </section>
             <section className="page-section-h1">
-                <div style={textBoxStyle}>
+                <div style={textBoxStyle} className="text-box">
                     <h4 style={{ color: "black", fontSize: "1.5em" }}>
                         {info.heading}
                     </h4>

@@ -1,7 +1,13 @@
 import React from "react";
+import { AppContext } from "../../components/context";
+
+const screenWidth = window.innerWidth;
+const isMobile = screenWidth < 480;
 
 export function CareerTimeLine({ points, setInfo }) {
-    const fitWidthPx = 700;
+    const { colorMode } = React.useContext(AppContext);
+    const isLight = colorMode === "light";
+    const fitWidthPx = isMobile ? screenWidth + 250 : 700
     const containerStyle = {
         display: "flex",
         width: fitWidthPx + "px",
@@ -22,7 +28,7 @@ export function CareerTimeLine({ points, setInfo }) {
     }
 
     return (
-        <div style={containerStyle}>
+        <div style={containerStyle} className="career-timeline">
             {points.map((pointLine, pointsIndex) => {
                 return (
                     <div
@@ -36,11 +42,9 @@ export function CareerTimeLine({ points, setInfo }) {
                         {" "}
                         {pointLine.map((point, pointLineIndex) => {
                             if (Array.isArray(point.date)) {
-                                const length = random(100, fitWidthPx);
                                 return (
-                                    //make it so that the dates in the array are displayed close to one another but there is also a line in between them, also the circle and the line should be blue or something to signify that this is a date range instead of a single date
                                     <div
-                                        style={{ margin: `25px 0` }}
+                                        style={{ margin: `25px 0`, marginLeft: pointsIndex === points.length - 1 ? 150 : 0 }}
                                         key={point.date}
                                     >
                                         <div
@@ -54,8 +58,23 @@ export function CareerTimeLine({ points, setInfo }) {
                                                 pointsIndex !==
                                                 points.length - 1 &&
                                                 pointsIndex % 2 === 1 && (
-                                                    <HorseShoeLine orientation="left" />
+                                                    <HorseShoeLine orientation="left" color={isLight ? "black" : "white"} />
                                                 )}
+                                            {pointsIndex !== points.length - 1 &&
+                                                <StraightLine
+                                                    length={
+                                                        fitWidthPx / 2 -
+                                                        40 *
+                                                        ifOneReturnZero(
+                                                            pointLine.length
+                                                        ) -
+                                                        point.length / 2
+                                                    }
+                                                    color={isLight ? "black" : "white"}
+                                                />}
+                                            <DateRange point={point} setInfo={setInfo} length={point.length} direction={
+                                                pointsIndex % 2 === 1 ? 1 : 0
+                                            } />
                                             <StraightLine
                                                 length={
                                                     fitWidthPx / 2 -
@@ -65,26 +84,16 @@ export function CareerTimeLine({ points, setInfo }) {
                                                     ) -
                                                     point.length / 2
                                                 }
-                                            />
-                                            <DateRange point={point} setInfo={setInfo} length={point.length} />
-                                            <StraightLine
-                                                length={
-                                                    fitWidthPx / 2 -
-                                                    40 *
-                                                    ifOneReturnZero(
-                                                        pointLine.length
-                                                    ) -
-                                                    point.length / 2
-                                                }
+                                                color={isLight ? "black" : "white"}
                                             />
                                             {pointLineIndex ===
                                                 pointLine.length - 1 &&
                                                 pointsIndex !==
                                                 points.length - 1 &&
                                                 pointsIndex % 2 !== 1 && (
-                                                    <HorseShoeLine orientation="right" />
+                                                    <HorseShoeLine orientation="right" color={isLight ? "black" : "white"} />
                                                 )}
-                                            {pointLineIndex ===
+                                            {/* {pointLineIndex ===
                                                 pointLine.length - 1 &&
                                                 pointsIndex ===
                                                 points.length - 1 && (
@@ -99,15 +108,15 @@ export function CareerTimeLine({ points, setInfo }) {
                                                                 x2="70"
                                                                 y2="0"
                                                                 style={{
-                                                                    stroke: "white",
+                                                                    stroke: isLight ? "black" : "white",
                                                                     strokeWidth:
                                                                         "5px",
                                                                 }}
                                                             />
                                                         </svg>
-                                                        <DatePoint date="Today" info={"Currently, I remain vigilant in my studies to ensure my successful graduation, while simultaneously working on my own passion-projects to enhance my skills and keep myself up to date with the newest technology standards."} setInfo={setInfo} />
+                                                        <DatePoint color={isLight ? "black" : "white"} date="Today" info={"Currently, I remain vigilant in my studies to ensure my successful graduation, while simultaneously working on my own passion-projects to enhance my skills and keep myself up to date with the newest technology standards."} setInfo={setInfo} />
                                                     </>
-                                                )}
+                                                )} */}
                                         </div>
                                     </div>
                                 );
@@ -128,9 +137,10 @@ export function CareerTimeLine({ points, setInfo }) {
                                                 pointsIndex !==
                                                 points.length - 1 &&
                                                 pointsIndex % 2 === 1 && (
-                                                    <HorseShoeLine orientation="left" />
+                                                    <HorseShoeLine orientation="left" color={isLight ? "black" : "white"} />
                                                 )}
                                             <DatePoint
+                                                color={isLight ? "black" : "white"}
                                                 date={point.date}
                                                 info={point.info}
                                                 setInfo={setInfo}
@@ -152,6 +162,8 @@ export function CareerTimeLine({ points, setInfo }) {
                                                                 pointLine.length
                                                             )
                                                         }
+
+                                                        color={isLight ? "black" : "white"}
                                                     />
                                                 )}
                                             {/* svg line that does a horseshoe shape */}
@@ -160,7 +172,7 @@ export function CareerTimeLine({ points, setInfo }) {
                                                 pointsIndex !==
                                                 points.length - 1 &&
                                                 pointsIndex % 2 !== 1 && (
-                                                    <HorseShoeLine orientation="right" />
+                                                    <HorseShoeLine orientation="right" color={isLight ? "black" : "white"} />
                                                 )}
 
                                             {pointLineIndex ===
@@ -184,7 +196,7 @@ export function CareerTimeLine({ points, setInfo }) {
                                                                 }}
                                                             />
                                                         </svg>
-                                                        <DatePoint date="Today" info={"Currently, I remain vigilant in my studies to ensure my successful graduation, while simultaneously working on my own passion-projects to enhance my skills and keep myself up to date with the newest technology standards."} setInfo={setInfo} />
+                                                        <DatePoint color={isLight ? "black" : "white"} date="Today" info={"Currently, I remain vigilant in my studies to ensure my successful graduation, while simultaneously working on my own passion-projects to enhance my skills and keep myself up to date with the newest technology standards."} setInfo={setInfo} />
                                                     </>
                                                 )}
                                         </div>
@@ -215,7 +227,7 @@ const StraightLine = ({ length, color = "white" }) => {
     );
 };
 
-const HorseShoeLine = ({ orientation }) => {
+const HorseShoeLine = ({ orientation, color }) => {
     return (
         <>
             <svg
@@ -237,7 +249,7 @@ const HorseShoeLine = ({ orientation }) => {
             >
                 <path
                     d="M0 3H40C62.0914 3 80 20.9086 80 43V43C80 65.0914 62.0914 83 40 83H0"
-                    stroke="white"
+                    stroke={color}
                     strokeWidth="2.1"
                 />
             </svg>
@@ -245,15 +257,18 @@ const HorseShoeLine = ({ orientation }) => {
     );
 };
 
-const DateRange = ({ point, setInfo, length = 200 }) => {
+const DateRange = ({ point, setInfo, length = 200, direction }) => {
     const [hovering, setHovering] = React.useState(false);
+
+
+
+
     return (
         <>
             <DatePoint
                 date={point.date[0]}
                 info={point.info}
                 color={"#0BB9E5"}
-                fontColor={"white"}
                 isPartOfRange={true}
                 hoveringRange={hovering}
             />
@@ -262,14 +277,16 @@ const DateRange = ({ point, setInfo, length = 200 }) => {
                 date={point.date[1]}
                 info={point.info}
                 color={"#0BB9E5"}
-                fontColor={"white"}
                 isPartOfRange={true}
                 hoveringRange={hovering}
             />
             <div
                 onMouseEnter={() => {
                     setHovering(true);
-                    setInfo({ heading: `${point.date[0]} - ${point.date[1]}`, info: point.info });
+                    const heading = direction === 1
+                        ? `${point.date[1]} - ${point.date[0]}`
+                        : `${point.date[0]} - ${point.date[1]}`;
+                    setInfo({ heading, info: point.info });
                 }}
                 onMouseLeave={() => {
                     setHovering(false);
@@ -288,8 +305,11 @@ const DateRange = ({ point, setInfo, length = 200 }) => {
     );
 };
 
-const DatePoint = ({ date, info, setInfo, color = "white", fontColor = "black", isPartOfRange = false, hoveringRange }) => {
+const DatePoint = ({ date, info, setInfo, color = "white", isPartOfRange = false, hoveringRange }) => {
     const [hovering, setHovering] = React.useState(false);
+    const isLight = color === "white";
+
+    const fontColor = isLight ? "black" : "white";
 
     const hoverFinal = isPartOfRange ? hoveringRange : hovering;
     return (

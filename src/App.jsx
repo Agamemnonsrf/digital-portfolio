@@ -30,15 +30,15 @@ function App() {
     );
 }
 
-const GradientBackground = ({ color }) => {
+export const GradientBackground = ({ color }) => {
     return (
         <div
             style={{
                 background:
                     color === "light"
-                        ? "linear-gradient(103deg, #FFF 17.75%, #A6D9E5 100%)"
-                        : "linear-gradient(103deg, #000 17.75%, #09455F 100%)",
-                mixBlendMode: color === "light" ? "lighten" : "darken",
+                        ? "linear-gradient(103deg, #FFF 17.75%,rgb(159, 230, 239) 100%)"
+                        : "linear-gradient(103deg, #000 17.75%,rgb(22, 91, 121) 100%)",
+                // mixBlendMode: color === "light" ? "lighten" : "darken",
                 width: "100%",
                 height: "100%",
                 top: "0",

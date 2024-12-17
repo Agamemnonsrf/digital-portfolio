@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter";
+    font-family: "Quicksand";
+
 }
 
 .container {
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
+
 }
 
 .layout {
@@ -33,12 +35,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
+    scale: 0;
     transition: opacity 0.5s ease-in-out;
     position: absolute;
 }
 
 .current-section {
     opacity: 1;
+    scale: 1;
     transition: opacity 0.3s ease-in-out;
     z-index: 1;
 }
@@ -49,6 +53,7 @@
     align-items: flex-end;
     justify-content: center;
     height: 100%;
+
     z-index: 1;
 }
 
@@ -57,6 +62,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.section-container-career {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     height: 100%;
     width: 100%;
     z-index: 1;
@@ -82,6 +97,20 @@ p {
     height: 50vh;
     display: flex;
     align-items: center;
+}
+
+.page-section-h05 {
+    height: 12.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-section-h35 {
+    height: 87.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .page-section-h1 {
@@ -126,18 +155,21 @@ h5 {
     right: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     z-index: 2;
 }
 
 .colormode button {
     border-radius: 0;
-    width: 3vw;
-    height: 3vw;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease-in-out;
+    width: 40px;
+    height: 40px;
+
 }
 
 .sidenav-button:focus,
@@ -188,11 +220,23 @@ button {
 }
 
 .technology-pill-container {
-
     transition: transform 0.3s ease-in-out, margin-top 0.3s ease-in-out;
     transform: translateY(-100%)
 }
 
+.project-image-single {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: max-content;
+    box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+    border: thin solid rgb(38, 57, 77);
+}
+
+.project-image-single img {
+    border-radius: 10px;
+    height: 100%;
+}
 
 .project-image-above {
     position: absolute;
@@ -211,7 +255,6 @@ button {
 }
 
 
-
 .project-card a,
 .project-card button {
     font-family: 'jetbrains mono';
@@ -226,18 +269,19 @@ button {
     transition: transform 0.3s ease-in-out;
 }
 
+.project-link-span:hover span:nth-child(2) {
+    transform: translateX(5px);
+    transition: transform 0.3s ease-in-out;
+}
 .project-link-span {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
-    transition: scale 0.2s ease-in-out, width 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
-.project-link-span:hover {
-    justify-content: space-between;
-    width: 115%;
-}
+
 
 .project-card button:hover {
     transform: perspective(200px) rotateX(15deg) rotateY(15deg);
@@ -245,6 +289,14 @@ button {
 
 .sun-icon {
     height: 28.8px;
+}
+
+.sun-icon:not(.selected), .moon-icon:not(.selected) {
+    transition: transform 0.3s ease-in-out;
+}
+
+.sun-icon:not(.selected):hover, .moon-icon:not(.selected):hover {
+    transform: rotate(-20deg);
 }
 
 .moon-icon {
@@ -280,7 +332,8 @@ button {
 ::-webkit-scrollbar-thumb {
     background: black;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 /* Handle on hover */
