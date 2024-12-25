@@ -75,7 +75,6 @@ const ScrollIcon = ({ isCurrentSection }) => {
 
 const XIcon = ({ isHovering }) => {
     const { colorMode } = React.useContext(AppContext)
-    console.log(isHovering + "hovering")
     return (
         <svg xmlns="http://www.w3.org/2000/svg"
             style={{

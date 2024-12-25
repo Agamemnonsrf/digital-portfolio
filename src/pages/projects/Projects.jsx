@@ -19,7 +19,7 @@ export function Projects() {
                 description: "Equtree is a Single Page Application which allows you to portray mathematical equations in the format of a tree with nodes as variables. In the beginning there is only the root variable which allows you to run any equation and see the result. You can add a variable inside it and name it as you wish, and if you add another sub-node with the name of that variable you can write an equation for it too (this variable can include nested variables too). Run the equation cards from bottom to the top to see the final result. The canvas can be zoomed in or out and panned around.",
                 deploymentLink: "https://equtree.surge.sh",
                 codeLink: "https://github.com/ooey/equtree",
-                images: ["/static/equtree-1.png", "/static/equtree-2.png"],
+                images: ["/digital-portfolio/static/equtree-1.png", "/digital-portfolio/static/equtree-2.png"],
                 tech: ["Reactjs"]
             },
             {
@@ -27,7 +27,7 @@ export function Projects() {
                 description: "This is a web forum/image board made with Nextjs/Reactjs on the front-end and Expressjs on the backend. Users can post threads on the main board and reply to them, and other replies. The main page features a customizable layout which can be turned from 1 thread per row, to a masonry layout for multiple threads per row. A user can go in a specific thread and interact with other users inside. This was one of my first ever React projects that I made as a fullstack exercise.",
                 deploymentLink: "",
                 codeLink: "https://github.com/ooey/765forums",
-                images: ["/static/765forums-1.png", "/static/765forums-2.png"],
+                images: ["/digital-portfolio/static/765forums-1.png", "/digital-portfolio/static/765forums-2.png"],
                 tech: ["Nextjs", "Expressjs", "MySQL"]
             },
             {
@@ -35,7 +35,7 @@ export function Projects() {
                 description: "A static website serving as the main advertisement for the company. Made with html, css and jquery. Features responsive design.",
                 deploymentLink: "https://brahmsdev.com",
                 codeLink: "",
-                images: ["/static/brahmsdev-1.png", "/static/brahmsdev-2.png"],
+                images: ["/digital-portfolio/static/brahmsdev-1.png", "/digital-portfolio/static/brahmsdev-2.png"],
                 tech: ["HTML", "CSS", "JavaScript"]
             },
             {
@@ -43,7 +43,7 @@ export function Projects() {
                 description: "A static website for one of the clients of Brahms Dev. Made with html, css and jquery. Features responsive design.",
                 deploymentLink: "https://caravage.ch/",
                 codeLink: "",
-                images: ["/static/caravage-1.png", "/static/caravage-2.png"],
+                images: ["/digital-portfolio/static/caravage-1.png", "/digital-portfolio/static/caravage-2.png"],
                 tech: ["HTML", "CSS", "JavaScript"]
             },
             {
@@ -51,7 +51,7 @@ export function Projects() {
                 description: "A static website for one of the clients of Brahms Dev. Made with html, css and jquery. Features responsive design.",
                 deploymentLink: "https://tokeninvest.ch/",
                 codeLink: "",
-                images: ["/static/tokeninvest-1.png", "/static/tokeninvest-2.png"],
+                images: ["/digital-portfolio/static/tokeninvest-1.png", "/digital-portfolio/static/tokeninvest-2.png"],
                 tech: ["HTML", "CSS", "JavaScript"]
             },
             {
@@ -59,7 +59,7 @@ export function Projects() {
                 description: "A static website for one of the clients of Brahms Dev. Made with html, css and jquery. Features responsive design.",
                 deploymentLink: "http://escape-velocity.ch/",
                 codeLink: "",
-                images: ["/static/escapevelocity-1.png", "/static/escapevelocity-2.png"],
+                images: ["/digital-portfolio/static/escapevelocity-1.png", "/digital-portfolio/static/escapevelocity-2.png"],
                 tech: ["HTML", "CSS", "JavaScript"]
             }
         ],
@@ -69,7 +69,7 @@ export function Projects() {
                 description: "One of the first apps I made with React Native. A simple calendar app that allows the user to add notes for each day of the month and a color code. Features smooth animations using the React Native Animated API and SQLite local storage.",
                 deploymentLink: "",
                 codeLink: "",
-                images: ["/static/rn-calendar-1.png", "/static/rn-calendar-2.png"],
+                images: ["/digital-portfolio/static/rn-calendar-1.png", "/digital-portfolio/static/rn-calendar-2.png"],
                 tech: ["React Native", "SQLite"]
             },
         ],
@@ -79,7 +79,7 @@ export function Projects() {
                 description: "A website made in co-operation with SP Consulting GmbH as a university project with two other developers, to reserve office spaces for a company. Made with Reactjs. Features a login system with different user permissions, a calendar to pick the date and time of the reservation, and a list of all the reservations. The local storage serves to synchronize the reservations across different instances of the app and prevent actions without the proper permissions. Unit tests were also included in the code.",
                 deploymentLink: "https://office-reservations.surge.sh/",
                 codeLink: "https://github.com/Agamemnonsrf/Office-Reservations-Assignment",
-                images: ["/static/reservations-1.png", "/static/reservations-2.png"],
+                images: ["/digital-portfolio/static/reservations-1.png", "/digital-portfolio/static/reservations-2.png"],
                 tech: ["Reactjs"]
             },
             {
@@ -87,7 +87,7 @@ export function Projects() {
                 description: "A website made in co-operation with Olympia Electronics as a university with five other developers, to manage and monitor the remote security devices of a user. Made with Reactjs on the front-end, .NET Core on the back-end and MySQL for the database. Features a login system, a list of all the devices and their status and a control panel to modify them or check for errors.",
                 deploymentLink: "https://luminaire-dashboard.surge.sh/",
                 codeLink: "https://github.com/OlympiaElectronicsExercise/LuminaireDashboard",
-                images: "/static/luminaire.png",
+                images: "/digital-portfolio/static/luminaire.png",
                 tech: ["Reactjs", ".NET Core", "MySQL"]
             },
             {
@@ -95,7 +95,7 @@ export function Projects() {
                 description: "A desktop application made with Java Swing as a university project in a team of three developers. It is a simple painting program which allows the user to use all the expected tools of a painting program, such as a brush, an eraser, a color picker, a fill tool, a line tool and a shape tool. The user can also save and load their work.",
                 deploymentLink: "",
                 codeLink: "https://github.com/Agamemnonsrf/swingpaintmaven",
-                images: "/static/swing-paint.png",
+                images: "/digital-portfolio/static/swing-paint.png",
                 tech: ["Java Swing"]
             },
         ],

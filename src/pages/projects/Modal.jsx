@@ -109,7 +109,22 @@ const Modal = ({ isOpen, onClose, project, isLightMode }) => {
                 </h2>
 
                 {/* Project Images */}
-                {images && images.length > 0 && (
+                { //if it isn't an array
+                    !Array.isArray(images) && (
+                        <div style={{ marginBottom: "12px", display: "flex", justifyContent: "center" }}>
+                            <img
+                                src={images}
+                                alt={`${name} screenshot`}
+                                style={{
+                                    width: name === "RN Calendar" ? "300px" : "100%",
+                                    borderRadius: "4px",
+                                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                                }}
+                            />
+                        </div>
+                    )
+                }
+                {Array.isArray(images) && (
                     <div style={{ marginBottom: "12px", display: "flex", justifyContent: "center" }}>
                         <img
                             src={images[0]}

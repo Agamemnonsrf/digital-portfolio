@@ -36,7 +36,7 @@ export function Connect() {
         { icon: getIcon('github'), title: "Github", content: `<a target='_blank' href='https://github.com/Agamemnonsrf' style='color: ${isLight ? "rgb(215, 219, 255)" : "#646cff"}'>github.com/Agamemnonsrf</a>` },
         { icon: getIcon('linkedin'), title: "LinkedIn", content: `<a target='_blank' href='https://linkedin.com/in/agamemsrf' style='color: ${isLight ? "rgb(215, 219, 255)" : "#646cff"}'>linkedin.com/in/agamemsrf</a>` },
         { icon: getIcon('phone'), title: "Phone Number", content: "+306945100039" },
-        { icon: getIcon('scroll'), title: "PDF Portfolio", content: "Download" },
+        { icon: getIcon('scroll'), title: "PDF Portfolio", content: "<a href='/digital-portfolio/static/CV-Agamemnon-Serafeim.pdf' download>Download</a>" },
     ];
 
     const gridStyle = {
